@@ -3,7 +3,7 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
     <xacro:macro name="mid360"
-                 params="name parent *origin">
+                 params="name parent *origin ros_topic">
 
         <link name="${name}">
             <inertial>
@@ -66,11 +66,54 @@
             <parent link="${parent}"/>
             <child link="${name}"/>
         </joint>
-
+        <xacro:macro name="Livox_Mid_gazebo_sensor" params="name:=livox_laser">
         <gazebo reference="${name}">
-            <self_collide>1</self_collide>
-            <material>Gazebo/Blue</material>
-        </gazebo>
+        <sensor type="ray" name="laser_livox">
+            <pose>0 0 0.0 0 0 0</pose>
+            <visualize>true</visualize>
+            <always_on>True</always_on>
+            <update_rate>10</update_rate>
+            <!-- This ray plgin is only for visualization. -->
+            <plugin name="gazebo_ros_laser_controller" filename="liblivox_laser_simulation.so">
+                <ray>
+                <scan>
+                    <horizontal>
+                        <samples>100</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-3.1415926535897931</min_angle>
+                <max_angle>3.1415926535897931</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>50</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-0.122</min_angle>
+                <max_angle>0.908</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.1</min>
+                    <max>5</max>
+                    <resolution>1</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.0</stddev>
+                </noise>
+                </ray>
+            <visualize>False</visualize>
+                <samples>20000</samples>
+                <downsample>1</downsample>
+                <csv_file_name>mid360.csv</csv_file_name>
+            <publish_pointcloud_type>2</publish_pointcloud_type>
+                <ros_topic>${ros_topic}</ros_topic>
+            <!-- <ros_topic>/livox/lidar</ros_topic>    -->
+            <frameName>base</frameName>
+            </plugin>
+        </sensor>
+    </gazebo>
+  </xacro:macro>
+    <xacro:Livox_Mid_gazebo_sensor name="${name}"/>
 
     </xacro:macro>
 </robot>
