@@ -10,7 +10,7 @@
     <xacro:include filename="$(find legged_perceptive_description)/urdf/mid360.xacro"/>
 
 
-     <!--   <xacro:sensor_d435 name="front_camera" topics_ns="front_camera" parent="base">
+<!--        <xacro:sensor_d435 name="front_camera" topics_ns="front_camera" parent="base">
             <origin xyz="0.36 -0.0 0.01" rpy="3.141 0.38 0"/>
         </xacro:sensor_d435>-->
 
@@ -19,11 +19,11 @@
     </xacro:sensor_t265>
 
 
-    <xacro:mid360 name="livox_right" parent="base" ros_topic="/livox/lidar_192_168_8_101">
+    <xacro:mid360 name="livox_right" parent="base" ros_topic="/livox/lidar_192_168_8_101" frame="livox_right">
         <origin xyz="0.365 -0.068 -0.030" rpy="0 0 0"/>
     </xacro:mid360>
 
-    <xacro:mid360 name="livox_left" parent="base" ros_topic="/livox/lidar_192_168_8_102">
+    <xacro:mid360 name="livox_left" parent="base" ros_topic="/livox/lidar_192_168_8_102" frame="livox_left">
         <origin xyz="0.365 0.068 -0.030" rpy="0 0 0"/>
     </xacro:mid360>
 
