@@ -10,9 +10,9 @@
     <xacro:include filename="$(find legged_perceptive_description)/urdf/mid360.xacro"/>
 
 
-<!--        <xacro:sensor_d435 name="front_camera" topics_ns="front_camera" parent="base">
+        <xacro:sensor_d435 name="front_camera" topics_ns="front_camera" parent="base">
             <origin xyz="0.36 -0.0 0.01" rpy="3.141 0.38 0"/>
-        </xacro:sensor_d435>-->
+        </xacro:sensor_d435>
 
     <xacro:sensor_t265 name="tracking_camera" topics_ns="tracking_camera" parent="base">
         <origin xyz="0.16 0 0.085" rpy="0 -1.04 0"/>
