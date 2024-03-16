@@ -18,6 +18,10 @@ convex_plane_decomposition_ros package (and its dependencies), DO NOT build the 
     git clone git@github.com:qiayuanliao/legged_perceptive.git
     catkin build legged_perceptive_description legged_perceptive_controllers
 
+### 增加Mid360的Gazebo仿真
+    git clone https://github.com/fratopa/Mid360_simulation_plugin.git
+    catkin build livox_laser_simulation
+
 ### Run 
 Launch gazbeo
 
