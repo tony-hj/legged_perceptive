@@ -4,7 +4,7 @@
 
     <xacro:macro name="mid360"
                  params="name parent *origin ros_topic frame">
-
+        <xacro:property name="M_PI" value="3.1415926535897931"/>
         <link name="${name}">
             <inertial>
                 <origin rpy="0 0 0" xyz="0 0 -0.0076"/>
@@ -15,11 +15,10 @@
                         izz="${(2*0.270)/5.0*(0.022*0.022)}"/>
             </inertial>
             <visual>
-                <origin rpy="0 0 0" xyz="0 0 -0.0076"/>
+                <origin rpy="${M_PI/2} 0 ${M_PI}" xyz="0 0 -0.0076"/>
                 <geometry>
-                    <sphere radius="0.022"/>
+                    <mesh filename="package://livox_laser_simulation/meshes/mid360.stl" scale="0.001 0.001 0.001"/>
                 </geometry>
-                <color rgba="0.0 0.0 0.5 0.5"/>
             </visual>
 
             <collision>
@@ -87,8 +86,8 @@
                     <vertical>
                         <samples>50</samples>
                         <resolution>1</resolution>
-                        <min_angle>-3.1415926535897931</min_angle>
-                <max_angle>3.1415926535897931</max_angle>
+                        <min_angle>-0.515</min_angle>
+                <max_angle>0.515</max_angle>
                     </vertical>
                 </scan>
                 <range>
@@ -103,6 +102,7 @@
                 </noise>
                 </ray>
             <visualize>False</visualize>
+<!--            <visualize>True</visualize>-->
                 <samples>20000</samples>
                 <downsample>1</downsample>
                 <csv_file_name>mid360.csv</csv_file_name>
