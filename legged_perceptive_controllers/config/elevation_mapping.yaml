@@ -10,9 +10,17 @@ input_sources:
     publish_on_update: true
     sensor_processor:
       type: perfect
+  back: # A name to identify the input source
+    type: pointcloud # Supported types: pointcloud
+    topic: /back_camera/depth/color/points
+    queue_size: 1
+    publish_on_update: true
+    sensor_processor:
+      type: perfect
   livox_right:
     type: pointcloud
     topic: /livox/right
+#    topic: /livox/lidar_192_168_8_101
     queue_size: 1
     publish_on_update: true
     sensor_processor:
@@ -22,12 +30,31 @@ input_sources:
   livox_left:
     type: pointcloud
     topic: /livox/left
+#    topic: /livox/lidar_192_168_8_102
     queue_size: 1
     publish_on_update: true
     sensor_processor:
       type: laser
       ignore_points_above: 0.5
       ignore_points_below: -0.5
+  livox_back:
+    type: pointcloud
+    topic: /livox/back
+    queue_size: 1
+    publish_on_update: true
+    sensor_processor:
+      type: laser
+      ignore_points_above: 0.5
+      ignore_points_below: -0.5
+#  livox_frontdown:
+#    type: pointcloud
+#    topic: /livox/frontdown
+#    queue_size: 1
+#    publish_on_update: true
+#    sensor_processor:
+#      type: laser
+#      ignore_points_above: 0.5
+#      ignore_points_below: -0.5
 
 track_point_frame_id: base
 track_point_x: 0.0

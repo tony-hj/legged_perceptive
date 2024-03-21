@@ -27,6 +27,8 @@ livox_right_filter:
           - base
           - livox_right
           - livox_left
+          - livox_back
+
 
 livox_left_filter:
   cloud_filter_chain:
@@ -57,3 +59,69 @@ livox_left_filter:
           - base
           - livox_right
           - livox_left
+          - livox_back
+
+
+livox_back_filter:
+  cloud_filter_chain:
+    - name: livox_filter
+      type: robot_body_filter/RobotBodyFilterPointCloud2
+      params:
+        sensor/min_distance: 0.4
+        frames/fixed: odom
+        frames/sensor: livox_back
+        frames/output: livox_back
+        body_model/inflation/padding: 0.002
+        body_model/robot_description_param: legged_robot_description
+        debug/marker/shadow: true
+        debug/marker/contains: true
+        only_links:
+          - livox_back
+    - name: body_filter
+      type: robot_body_filter/RobotBodyFilterPointCloud2
+      params:
+        frames/fixed: odom
+        frames/sensor: livox_back
+        frames/output: livox_back
+        body_model/inflation/padding: 0.02
+        body_model/robot_description_param: legged_robot_description
+        debug/marker/shadow: true
+        debug/marker/contains: true
+        ignored_links/everywhere:
+          - base
+          - livox_right
+          - livox_left
+          - livox_back
+
+
+#livox_frontdown_filter:
+#  cloud_filter_chain:
+#    - name: livox_filter
+#      type: robot_body_filter/RobotBodyFilterPointCloud2
+#      params:
+#        sensor/min_distance: 0.4
+#        frames/fixed: odom
+#        frames/sensor: livox_frontdown
+#        frames/output: livox_frontdown
+#        body_model/inflation/padding: 0.002
+#        body_model/robot_description_param: legged_robot_description
+#        debug/marker/shadow: true
+#        debug/marker/contains: true
+#        only_links:
+#          - livox_frontdown
+#    - name: body_filter
+#      type: robot_body_filter/RobotBodyFilterPointCloud2
+#      params:
+#        frames/fixed: odom
+#        frames/sensor: livox_frontdown
+#        frames/output: livox_frontdown
+#        body_model/inflation/padding: 0.02
+#        body_model/robot_description_param: legged_robot_description
+#        debug/marker/shadow: true
+#        debug/marker/contains: true
+#        ignored_links/everywhere:
+#          - base
+#          - livox_right
+#          - livox_left
+#          - livox_back
+#          - livox_frontdown

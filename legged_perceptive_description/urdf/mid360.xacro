@@ -21,43 +21,43 @@
                 </geometry>
             </visual>
 
-            <collision>
-                <origin xyz="0 0 0.027" rpy="0 0 0"/>
-                <geometry>
-                    <box size="0.003 0.067 0.0165"/>
-                </geometry>
-            </collision>
-            <collision>
-                <origin xyz="0 0.041 0.007" rpy="-1.04 0 0"/>
-                <geometry>
-                    <box size="0.003 0.055 0.024"/>
-                </geometry>
-            </collision>
-            <collision>
-                <origin xyz="0 -0.041 0.007" rpy="1.04 0 0"/>
-                <geometry>
-                    <box size="0.003 0.055 0.024"/>
-                </geometry>
-            </collision>
+<!--            <collision>-->
+<!--                <origin xyz="0 0 0.027" rpy="0 0 0"/>-->
+<!--                <geometry>-->
+<!--                    <box size="0.003 0.067 0.0165"/>-->
+<!--                </geometry>-->
+<!--            </collision>-->
+<!--            <collision>-->
+<!--                <origin xyz="0 0.041 0.007" rpy="-1.04 0 0"/>-->
+<!--                <geometry>-->
+<!--                    <box size="0.003 0.055 0.024"/>-->
+<!--                </geometry>-->
+<!--            </collision>-->
+<!--            <collision>-->
+<!--                <origin xyz="0 -0.041 0.007" rpy="1.04 0 0"/>-->
+<!--                <geometry>-->
+<!--                    <box size="0.003 0.055 0.024"/>-->
+<!--                </geometry>-->
+<!--            </collision>-->
 
-            <collision>
-                <origin xyz="0 0 0.027" rpy="0 0 0"/>
-                <geometry>
-                    <box size="0.067 0.003 0.0165"/>
-                </geometry>
-            </collision>
-            <collision>
-                <origin xyz="0.041 0 0.007" rpy="0 1.04 0"/>
-                <geometry>
-                    <box size="0.055 0.003 0.024"/>
-                </geometry>
-            </collision>
-            <collision>
-                <origin xyz="-0.041 0 0.007" rpy="0 -1.04 0"/>
-                <geometry>
-                    <box size="0.055 0.003 0.024"/>
-                </geometry>
-            </collision>
+<!--            <collision>-->
+<!--                <origin xyz="0 0 0.027" rpy="0 0 0"/>-->
+<!--                <geometry>-->
+<!--                    <box size="0.067 0.003 0.0165"/>-->
+<!--                </geometry>-->
+<!--            </collision>-->
+<!--            <collision>-->
+<!--                <origin xyz="0.041 0 0.007" rpy="0 1.04 0"/>-->
+<!--                <geometry>-->
+<!--                    <box size="0.055 0.003 0.024"/>-->
+<!--                </geometry>-->
+<!--            </collision>-->
+<!--            <collision>-->
+<!--                <origin xyz="-0.041 0 0.007" rpy="0 -1.04 0"/>-->
+<!--                <geometry>-->
+<!--                    <box size="0.055 0.003 0.024"/>-->
+<!--                </geometry>-->
+<!--            </collision>-->
         </link>
 
         <joint name="${name}_fixed" type="fixed">
@@ -75,6 +75,7 @@
             <update_rate>10</update_rate>
             <!-- This ray plgin is only for visualization. -->
             <plugin name="gazebo_ros_laser_controller" filename="liblivox_laser_simulation.so">
+<!--            <plugin name='gazebo_ros_laser_controller' filename='libgazebo_ros_gpu_block_laser.so'>-->
                 <ray>
                 <scan>
                     <horizontal>
